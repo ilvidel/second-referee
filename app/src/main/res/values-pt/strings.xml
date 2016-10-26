@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2nd Referee - Volleyball</string>
+    <string name="timeout">Tempo</string>
+    <string name="title_activity_main">Segundo Árbitro</string>
+    <string name="title_activity_numbers">Números</string>
+    <string name="service_change">Mudan. Serviço</string>
+    <string name="court_switch">Mudan. Campo</string>
+    <string name="substitution">Subst.</string>
+    <string name="timeout_large">Tempo Morto</string>
+    <string name="substitution_long">Substituição</string>
+    <string name="court_switch_long">Mudança de Campo</string>
+    <string name="service_change_long">Mudança de Serviço</string>
+    <string name="tapped_nowhere">Toca em um jogador</string>
+</resources>

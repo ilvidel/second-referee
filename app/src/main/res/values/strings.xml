@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">2nd Referee - Volleyball</string>
+
+    <string name="timeout">Time-out</string>
+    <string name="substitution">Substitution</string>
+
+    <string name="title_activity_main">Second Referee</string>
+    <string name="title_activity_numbers">Player Numbers</string>
+    <string name="service_change">Service Change</string>
+    <string name="court_switch">Switch Courts</string>
+    <string name="timeout_large">Time-out</string>
+    <string name="substitution_long">Substitution</string>
+    <string name="service_change_long">Service Change</string>
+    <string name="court_switch_long">Switch Courts</string>
+    <string name="reset" translatable="false">Reset</string>
+    <string name="tapped_nowhere">Tap on a player</string>
+</resources>

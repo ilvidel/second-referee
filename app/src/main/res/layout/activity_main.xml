@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="net.ilvidel.secref.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#63b7f8">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-1"
+                    android:id="@+id/buttonDeleteLeft"
+                    android:onClick="onDeletePointLeft"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:layout_gravity="center" />
+
+                <ImageButton
+                    style="?android:attr/buttonStyleSmall"
+                    android:src="@android:drawable/ic_menu_rotate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonRotateLeft"
+                    android:layout_gravity="center"
+                    android:onClick="onRotateLeft"
+                    android:contentDescription="Rotate" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="00"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                android:id="@+id/scoreLeft"
+                android:onClick="onScoreLeft"
+                android:layout_gravity="center|fill" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="00"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                android:onClick="onScoreRight"
+                android:id="@+id/scoreRight" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-1"
+                    android:id="@+id/buttonDeleteRight"
+                    android:onClick="onDeletePointRight"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:layout_gravity="center" />
+
+                <ImageButton
+                    style="?android:attr/buttonStyleSmall"
+                    android:src="@android:drawable/ic_menu_rotate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonRotateRight"
+                    android:onClick="onRotateRight"
+                    android:layout_gravity="center"
+                    android:contentDescription="Rotate" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textCapCharacters|textPersonName"
+                android:text="Name"
+                android:ems="8"
+                android:id="@+id/leftFieldName"
+                tools:text="ADV Miguelturra"
+                android:textAlignment="viewStart"
+                android:ellipsize="end" />
+
+            <Space
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_width="50dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textCapCharacters|textPersonName"
+                android:text="Name"
+                android:ems="8"
+                android:id="@+id/rightFieldName"
+                tools:text="CV Atlético Puertollano"
+                android:textAlignment="textEnd"
+                android:ellipsize="start" />
+        </LinearLayout>
+
+        <net.ilvidel.secref.CourtView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/court_view"
+            android:onClick="onCourtTap" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/timeout"
+                    android:onClick="onTimeoutLeft"
+                    android:id="@+id/timeoutLeft"
+                    android:layout_gravity="center_horizontal"
+                    android:ellipsize="end"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/substitution"
+                    android:onClick="onSubstitutionLeft"
+                    android:id="@+id/substLeft"
+                    android:layout_gravity="center_horizontal"
+                    android:ellipsize="end"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/court_switch"
+                    android:onClick="onSwapSides"
+                    android:id="@+id/buttonSwapSides"
+                    android:layout_weight="1"
+                    android:ellipsize="end" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/service_change"
+                    android:id="@+id/buttonChangeService"
+                    android:onClick="onChangeService"
+                    android:layout_weight="1"
+                    android:ellipsize="end" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"
+                    android:id="@+id/buttonReset"
+                    android:onClick="onResetButton"
+                    android:ellipsize="end"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/timeout"
+                    android:onClick="onTimeoutRight"
+                    android:id="@+id/timeoutRight"
+                    android:layout_gravity="center_horizontal"
+                    android:ellipsize="end"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/substitution"
+                    android:onClick="onSubstitutionRight"
+                    android:id="@+id/substRight"
+                    android:layout_gravity="center_horizontal"
+                    android:ellipsize="end"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2º Árbitro Voleibol</string>
+    <string name="substitution">Cambio</string>
+    <string name="timeout">Tiempo</string>
+    <string name="title_activity_main">Segundo Árbitro</string>
+    <string name="title_activity_numbers">Dorsales</string>
+    <string name="court_switch">Cambio de Campo</string>
+    <string name="service_change">Cambio de Saque</string>
+    <string name="timeout_large">Tiempo Muerto</string>
+    <string name="substitution_long">Sustitución</string>
+    <string name="court_switch_long">Cambio de Campo</string>
+    <string name="service_change_long">Cambio de Saque</string>
+    <string name="tapped_nowhere">Toca en un jugador</string>
+</resources>
