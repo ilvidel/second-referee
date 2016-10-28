@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Team left, right;
     private CourtView court;
+    private String label_time, label_subs;
 
     private Button buttonScoreL;
     private Button buttonScoreR;
@@ -44,6 +45,20 @@ public class MainActivity extends AppCompatActivity {
         buttonTOR = (Button) findViewById(R.id.timeoutRight);
         buttonSubstL = (Button) findViewById(R.id.substLeft);
         buttonSubstR = (Button) findViewById(R.id.substRight);
+
+        // screen-size-dependent labels
+        int size = getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+        switch (size){
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+            case Configuration.SCREENLAYOUT_SIZE_XLARGE:
+                label_time = getResources().getString(R.string.timeout_large);
+                label_subs = getResources().getString(R.string.substitution_long);
+                break;
+            default:
+                label_time = getResources().getString(R.string.timeout);
+                label_subs = getResources().getString(R.string.substitution);
+        }
+
     }
 
     @Override
@@ -105,24 +120,28 @@ public class MainActivity extends AppCompatActivity {
 
     public void onTimeoutLeft(View v) {
         left.timeout();
-        buttonTOL.setText(String.format("Tiempo (%d)", left.getTimeoutCount()));
+        buttonTOL.setText(String.format("%s (%d)", label_time, left.getTimeoutCount()));
+
+        if(left.getTimeoutCount() == 0) buttonTOL.setEnabled(false);
     }
 
     public void onTimeoutRight(View v) {
         right.timeout();
-        buttonTOR.setText(String.format("Tiempo (%d)", right.getTimeoutCount()));
+        buttonTOR.setText(String.format("%s (%d)", label_time, right.getTimeoutCount()));
+
+        if(right.getTimeoutCount() == 0) buttonTOR.setEnabled(false);
     }
 
     public void onSubstitutionLeft(View v) {
         left.setSubsCount(left.getSubsCount() - 1);
-        buttonSubstL.setText(String.format("Subst. (%d)", left.getSubsCount()));
+        buttonSubstL.setText(String.format("%s (%d)", label_subs, left.getSubsCount()));
 
         if(left.getSubsCount() == 0) buttonSubstL.setEnabled(false);
     }
 
     public void onSubstitutionRight(View v) {
         right.setSubsCount(right.getSubsCount() - 1);
-        buttonSubstR.setText(String.format("Subst. (%d)", right.getSubsCount()));
+        buttonSubstR.setText(String.format("%s (%d)", label_subs, right.getSubsCount()));
 
         if(right.getSubsCount() == 0) buttonSubstR.setEnabled(false);
     }
@@ -196,27 +215,14 @@ public class MainActivity extends AppCompatActivity {
         left.startSet();
         right.startSet();
 
-        String time, subs;
-        int size = getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
-        switch (size){
-            case Configuration.SCREENLAYOUT_SIZE_LARGE:
-            case Configuration.SCREENLAYOUT_SIZE_XLARGE:
-                time = getResources().getString(R.string.timeout_large);
-                subs = getResources().getString(R.string.substitution_long);
-                break;
-            default:
-                time = getResources().getString(R.string.timeout);
-                subs = getResources().getString(R.string.substitution);
-        }
-
-        buttonSubstL.setText(String.format("%s (%d)", subs, left.getSubsCount()));
+        buttonSubstL.setText(String.format("%s (%d)", label_subs, left.getSubsCount()));
         buttonSubstL.setEnabled(true);
-        buttonSubstR.setText(String.format("%s (%d)", subs, right.getSubsCount()));
+        buttonSubstR.setText(String.format("%s (%d)", label_subs, right.getSubsCount()));
         buttonSubstR.setEnabled(true);
 
-        buttonTOL.setText(String.format("%s (%d)", time, left.getTimeoutCount()));
+        buttonTOL.setText(String.format("%s (%d)", label_time, left.getTimeoutCount()));
         buttonTOL.setEnabled(true);
-        buttonTOR.setText(String.format("%s (%d)", time, right.getTimeoutCount()));
+        buttonTOR.setText(String.format("%s (%d)", label_time, right.getTimeoutCount()));
         buttonTOR.setEnabled(true);
 
         buttonScoreL.setText("00");
