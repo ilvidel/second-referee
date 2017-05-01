@@ -1,12 +1,16 @@
 package net.ilvidel.secref;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
-import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 label_subs = getResources().getString(R.string.substitution);
         }
 
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -84,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
 
         buttonScoreL.setText(String.format("%02d", left.getScore()));
         buttonScoreR.setText(String.format("%02d", right.getScore()));
-        buttonTOL.setText(String.format("Tiempo (%d)", left.getTimeoutCount()));
-        buttonTOR.setText(String.format("Tiempo (%d)", right.getTimeoutCount()));
-        buttonSubstL.setText(String.format("Subst. (%d)", left.getSubsCount()));
-        buttonSubstR.setText(String.format("Subst. (%d)", right.getSubsCount()));
+        buttonTOL.setText(String.format("%s (%d)", label_time, left.getTimeoutCount()));
+        buttonTOR.setText(String.format("%s (%d)", label_time, right.getTimeoutCount()));
+        buttonSubstL.setText(String.format("%s (%d)", label_subs, left.getSubsCount()));
+        buttonSubstR.setText(String.format("%s (%d)", label_subs, right.getSubsCount()));
     }
 
     public void onScoreLeft(View v) {
@@ -146,19 +153,6 @@ public class MainActivity extends AppCompatActivity {
         if(right.getSubsCount() == 0) buttonSubstR.setEnabled(false);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode != RESULT_OK) return;
-
-        int n = data.getIntExtra("playerin", -1);
-        if(n == -1) return;
-        court.setPlayerIn(n);
-
-        left.roster(court.getLeftPlayers());
-        right.roster(court.getRightPlayers());
-    }
-
     public void onSwapSides(View v) {
         Team aux = left.clone();
         left = right.clone();
@@ -211,6 +205,36 @@ public class MainActivity extends AppCompatActivity {
         court.invalidate();
     }
 
+    public void onCourtTap(View v) {
+        int out = court.getPlayerOut();
+        if(out == -1) {
+            Toast t = Toast.makeText(this, R.string.tapped_nowhere, Toast.LENGTH_SHORT);
+            t.show();
+            return;
+        }
+
+        //show dialog to choose number
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater li = LayoutInflater.from(this);
+        View chooser = li.inflate(R.layout.fragment_number_chooser_dialog, null);
+
+        builder.setView(chooser);
+        final EditText userInput = (EditText) chooser.findViewById(R.id.number_edit);
+        builder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int n = Integer.parseInt(userInput.getText().toString());
+                        setPlayer(n);
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+
     public void onResetButton(View v) {
         left.startSet();
         right.startSet();
@@ -233,16 +257,16 @@ public class MainActivity extends AppCompatActivity {
         court.invalidate();
     }
 
-    public void onCourtTap(View v) {
-        int out = court.getPlayerOut();
-        if(out == -1) {
-            Toast t = Toast.makeText(this, R.string.tapped_nowhere, Toast.LENGTH_SHORT);
-            t.show();
-            return;
-        }
-
-        Intent i = new Intent(this, NumbersActivity.class);
-        startActivityForResult(i, 1);
+    public void onShowSetting(View v) {
+        Intent i = new Intent(this, SettingsActivity.class);
+        startActivity(i);
     }
 
+    void setPlayer(int number) {
+        if(number < 0) return;
+        court.setPlayerIn(number);
+
+        left.roster(court.getLeftPlayers());
+        right.roster(court.getRightPlayers());
+    }
 }
