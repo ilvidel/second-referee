@@ -99,12 +99,55 @@
 
             </LinearLayout>
 
-            <net.ilvidel.secref.CourtView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/court_view"
-                android:onClick="onCourtTap"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <net.ilvidel.secref.CourtView
+                    android:id="@+id/court_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:onClick="onCourtTap" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonSwapSides"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="onSwapSides"
+                        android:text="@string/court_switch" />
+
+                    <Button
+                        android:id="@+id/buttonReset"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@android:color/holo_orange_light"
+                        android:gravity="center"
+                        android:onClick="onResetButton"
+                        android:text="@string/reset" />
+
+                    <Button
+                        android:id="@+id/buttonChangeService"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:onClick="onChangeService"
+                        android:text="@string/service_change" />
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -154,46 +197,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonSwapSides"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onSwapSides"
-                android:text="@string/court_switch" />
-
-            <Button
-                android:id="@+id/buttonReset"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@android:color/holo_orange_light"
-                android:onClick="onResetButton"
-                android:text="@string/reset" />
-
-            <Button
-                android:id="@+id/buttonChangeService"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onChangeService"
-                android:text="@string/service_change" />
-        </LinearLayout>
     </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:srcCompat="@android:drawable/ic_menu_preferences"
-        android:id="@+id/fab"
-        android:onClick="onShowSetting"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin" />
 
 </android.support.design.widget.CoordinatorLayout>
