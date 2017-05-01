@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">2nd Referee - Volleyball</string>
+    <string name="app_name">Arbitro Pallavolo</string>
     <string name="timeout">Time-out</string>
-    <string name="title_activity_main">Secondo Arbitro</string>
-    <string name="title_activity_numbers">Númeri</string>
+    <string name="title_activity_main">Partita</string>
     <string name="court_switch">Cambio de Campo</string>
     <string name="service_change">Cambio de Servizio</string>
     <string name="substitution">Sostit.</string>
@@ -14,5 +13,4 @@
     <string name="tapped_nowhere">Tocca su un giocatore</string>
     <string name="number">Numero:</string>
     <string name="cancel">Annulla</string>
-    <string name="number_chooser_fragment">Scegli il numero</string>
 </resources>
