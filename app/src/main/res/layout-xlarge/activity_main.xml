@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -135,101 +136,112 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_margin="@dimen/activity_horizontal_margin">
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/timeout_large"
-                    android:onClick="onTimeoutLeft"
                     android:id="@+id/timeoutLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/substitution_long"
-                    android:onClick="onSubstitutionLeft"
-                    android:id="@+id/substLeft"
-                    android:layout_gravity="center_horizontal"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/court_switch_long"
-                    android:onClick="onSwapSides"
-                    android:id="@+id/buttonSwapSides"
-                    android:layout_weight="1"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/service_change_long"
-                    android:id="@+id/buttonChangeService"
-                    android:onClick="onChangeService"
-                    android:layout_weight="1"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/reset"
-                    android:id="@+id/buttonReset"
-                    android:onClick="onResetButton"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:onClick="onTimeoutLeft"
                     android:text="@string/timeout_large"
-                    android:onClick="onTimeoutRight"
-                    android:id="@+id/timeoutRight"
-                    android:layout_gravity="center_horizontal"
                     android:textAppearance="@android:style/TextAppearance.Large" />
 
                 <Button
+                    android:id="@+id/substLeft"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/substitution_long"
-                    android:onClick="onSubstitutionRight"
-                    android:id="@+id/substRight"
                     android:layout_gravity="center_horizontal"
+                    android:onClick="onSubstitutionLeft"
+                    android:text="@string/substitution_long"
                     android:textAppearance="@android:style/TextAppearance.Large" />
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/timeoutRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="onTimeoutRight"
+                    android:text="@string/timeout_large"
+                    android:textAppearance="@android:style/TextAppearance.Large" />
+
+                <Button
+                    android:id="@+id/substRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="onSubstitutionRight"
+                    android:text="@string/substitution_long"
+                    android:textAppearance="@android:style/TextAppearance.Large" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonSwapSides"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onSwapSides"
+                android:text="@string/court_switch_long"
+                android:textAppearance="@android:style/TextAppearance.Large" />
+
+            <Button
+                android:id="@+id/buttonReset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:onClick="onResetButton"
+                android:text="@string/reset"
+                android:textAppearance="@android:style/TextAppearance.Large" />
+
+            <Button
+                android:id="@+id/buttonChangeService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onChangeService"
+                android:text="@string/service_change_long"
+                android:textAppearance="@android:style/TextAppearance.Large" />
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_preferences"
+        android:id="@+id/fab"
+        android:onClick="onShowSetting"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin" />
+
 </android.support.design.widget.CoordinatorLayout>

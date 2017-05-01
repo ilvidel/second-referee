@@ -12,4 +12,7 @@
     <string name="court_switch_long">Cambio de Campo</string>
     <string name="service_change_long">Cambio de Servizio</string>
     <string name="tapped_nowhere">Tocca su un giocatore</string>
+    <string name="number">Numero:</string>
+    <string name="cancel">Annulla</string>
+    <string name="number_chooser_fragment">Scegli il numero</string>
 </resources>

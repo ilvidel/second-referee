@@ -1,59 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="net.ilvidel.secref.MainActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@android:style/Theme.Holo">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@android:style/Theme.Holo"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#63b7f8">
+        android:background="#63b7f8"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/buttonDeleteLeft"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="-1"
-                    android:id="@+id/buttonDeleteLeft"
+                    android:layout_gravity="center"
                     android:onClick="onDeletePointLeft"
-                    android:textAppearance="@android:style/TextAppearance.Small"
-                    android:layout_gravity="center" />
+                    android:text="-1"
+                    android:textAppearance="@android:style/TextAppearance.Small" />
 
                 <ImageButton
+                    android:id="@+id/buttonRotateLeft"
                     style="?android:attr/buttonStyleSmall"
-                    android:src="@android:drawable/ic_menu_rotate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/buttonRotateLeft"
                     android:layout_gravity="center"
                     android:onClick="onRotateLeft"
-                    android:contentDescription="Rotate" />
+                    android:src="@android:drawable/ic_menu_rotate" />
             </LinearLayout>
 
             <Button
+                android:id="@+id/scoreLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="center|fill"
+                android:onClick="onScoreLeft"
                 android:text="00"
                 android:textSize="48sp"
-                android:textStyle="bold"
-                android:id="@+id/scoreLeft"
-                android:onClick="onScoreLeft"
-                android:layout_gravity="center|fill" />
+                android:textStyle="bold" />
 
             <Space
                 android:layout_width="0dp"
@@ -61,78 +75,77 @@
                 android:layout_weight="1" />
 
             <Button
+                android:id="@+id/scoreRight"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:onClick="onScoreRight"
                 android:text="00"
                 android:textSize="48sp"
-                android:textStyle="bold"
-                android:onClick="onScoreRight"
-                android:id="@+id/scoreRight" />
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/buttonDeleteRight"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="-1"
-                    android:id="@+id/buttonDeleteRight"
+                    android:layout_gravity="center"
                     android:onClick="onDeletePointRight"
-                    android:textAppearance="@android:style/TextAppearance.Small"
-                    android:layout_gravity="center" />
+                    android:text="-1"
+                    android:textAppearance="@android:style/TextAppearance.Small" />
 
                 <ImageButton
+                    android:id="@+id/buttonRotateRight"
                     style="?android:attr/buttonStyleSmall"
-                    android:src="@android:drawable/ic_menu_rotate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/buttonRotateRight"
-                    android:onClick="onRotateRight"
                     android:layout_gravity="center"
-                    android:contentDescription="Rotate" />
+                    android:onClick="onRotateRight"
+                    android:src="@android:drawable/ic_menu_rotate" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/leftFieldName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:ems="8"
                 android:inputType="textCapCharacters|textPersonName"
                 android:text="Name"
-                android:ems="8"
-                android:id="@+id/leftFieldName"
-                tools:text="ADV Miguelturra"
                 android:textAlignment="viewStart"
-                android:ellipsize="end" />
+                tools:text="ADV Miguelturra" />
 
             <Space
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:layout_width="50dp" />
+                android:layout_weight="3" />
 
             <EditText
+                android:id="@+id/rightFieldName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:ems="8"
                 android:inputType="textCapCharacters|textPersonName"
                 android:text="Name"
-                android:ems="8"
-                android:id="@+id/rightFieldName"
-                tools:text="CV Atlético Puertollano"
                 android:textAlignment="textEnd"
-                android:ellipsize="start" />
+                tools:text="CV Atlético Puertollano" />
         </LinearLayout>
 
         <net.ilvidel.secref.CourtView
+            android:id="@+id/court_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/court_view"
             android:onClick="onCourtTap" />
 
         <LinearLayout
@@ -142,102 +155,115 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/timeout"
-                    android:onClick="onTimeoutLeft"
                     android:id="@+id/timeoutLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:ellipsize="end"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/substitution"
-                    android:onClick="onSubstitutionLeft"
-                    android:id="@+id/substLeft"
-                    android:layout_gravity="center_horizontal"
-                    android:ellipsize="end"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/court_switch"
-                    android:onClick="onSwapSides"
-                    android:id="@+id/buttonSwapSides"
                     android:layout_weight="1"
-                    android:ellipsize="end" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/service_change"
-                    android:id="@+id/buttonChangeService"
-                    android:onClick="onChangeService"
-                    android:layout_weight="1"
-                    android:ellipsize="end" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reset"
-                    android:id="@+id/buttonReset"
-                    android:onClick="onResetButton"
                     android:ellipsize="end"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:onClick="onTimeoutLeft"
                     android:text="@string/timeout"
-                    android:onClick="onTimeoutRight"
-                    android:id="@+id/timeoutRight"
-                    android:layout_gravity="center_horizontal"
-                    android:ellipsize="end"
-                    android:layout_weight="1" />
+                    tools:text="Time-out (1)" />
 
                 <Button
+                    android:id="@+id/substLeft"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/substitution"
-                    android:onClick="onSubstitutionRight"
-                    android:id="@+id/substRight"
                     android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
                     android:ellipsize="end"
-                    android:layout_weight="1" />
+                    android:onClick="onSubstitutionLeft"
+                    android:text="@string/substitution"
+                    tools:text="substitution" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/timeoutRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:onClick="onTimeoutRight"
+                    android:text="@string/timeout"
+                    tools:text="Time-out (2)" />
+
+                <Button
+                    android:id="@+id/substRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:onClick="onSubstitutionRight"
+                    android:text="@string/substitution"
+                    tools:text="substitution" />
+
             </LinearLayout>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonSwapSides"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:onClick="onSwapSides"
+                android:text="@string/court_switch"
+                tools:text="switch courts" />
+
+            <Button
+                android:id="@+id/buttonReset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:ellipsize="end"
+                android:onClick="onResetButton"
+                android:text="Reset" />
+
+            <Button
+                android:id="@+id/buttonChangeService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:onClick="onChangeService"
+                android:text="@string/service_change" />
+
+        </LinearLayout>
+
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_preferences"
+        android:id="@+id/fab"
+        android:onClick="onShowSetting"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin" />
 </android.support.design.widget.CoordinatorLayout>
