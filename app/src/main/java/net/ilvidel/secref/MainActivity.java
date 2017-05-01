@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
     private Team left, right;
@@ -130,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
         buttonTOL.setText(String.format("%s (%d)", label_time, left.getTimeoutCount()));
 
         if(left.getTimeoutCount() == 0) buttonTOL.setEnabled(false);
+        showTimer(30);
     }
 
     public void onTimeoutRight(View v) {
@@ -137,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         buttonTOR.setText(String.format("%s (%d)", label_time, right.getTimeoutCount()));
 
         if(right.getTimeoutCount() == 0) buttonTOR.setEnabled(false);
+        showTimer(30);
     }
 
     public void onSubstitutionLeft(View v) {
@@ -257,16 +262,20 @@ public class MainActivity extends AppCompatActivity {
         court.invalidate();
     }
 
-    public void onShowSetting(View v) {
-        Intent i = new Intent(this, SettingsActivity.class);
-        startActivity(i);
-    }
-
     void setPlayer(int number) {
         if(number < 0) return;
         court.setPlayerIn(number);
 
         left.roster(court.getLeftPlayers());
         right.roster(court.getRightPlayers());
+    }
+
+    /**
+     * Display a dialog with a countdown
+     * @param seconds The number of seconds for countdown
+     */
+    void showTimer(int seconds) {
+        TimerDialog timerDialog = TimerDialog.newInstance(seconds);
+        timerDialog.show(getFragmentManager(), "NoticeDialogFragment");
     }
 }
