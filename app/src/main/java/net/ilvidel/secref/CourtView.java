@@ -13,9 +13,6 @@ import android.view.View;
 
 public class CourtView extends View {
 
-    private final int bgColor=0XFF63B7F8; //0xFF3366CC;
-    private final int floorColor=0xFFFFB95B; //0xFFFF9900;
-    private final int lineColor=Color.WHITE;
     private int courtHeight;
     private int courtWidth;
     private int left;
@@ -28,11 +25,9 @@ public class CourtView extends View {
     private int[] leftPlayers = new int[6];
     private boolean isServingLeft;
     private Point selected = null;
-    private Context ctxt;
 
     public CourtView(Context context) {
         super(context);
-        ctxt = context;
         init();
     }
 
@@ -43,6 +38,7 @@ public class CourtView extends View {
 
     public void init() {
         center = new Point(0, 0);
+        int bgColor = 0XFF63B7F8;
         setBackgroundColor(bgColor);
 
         isServingLeft = true;
@@ -71,10 +67,6 @@ public class CourtView extends View {
     public void setRightPlayers(int[] rightPlayers) {
         this.rightPlayers = rightPlayers;
         invalidate();
-    }
-
-    public boolean isServingLeft() {
-        return isServingLeft;
     }
 
     public void setIsServingLeft(boolean isServingLeft) {
@@ -110,6 +102,7 @@ public class CourtView extends View {
     }
 
     private void drawFloor(Canvas canvas) {
+        int floorColor = 0xFFFFB95B;
         Paint paint = new Paint();
         paint.setStrokeWidth(3);
         paint.setStyle(Paint.Style.FILL);
@@ -118,6 +111,7 @@ public class CourtView extends View {
     }
 
     private void drawLines(Canvas canvas) {
+        int lineColor = Color.WHITE;
         Paint paint = new Paint();
         paint.setColor(lineColor);
         paint.setStyle(Paint.Style.STROKE);
@@ -139,66 +133,120 @@ public class CourtView extends View {
 
     private void drawPlayers(Canvas canvas) {
         calcPoints();
-        Paint p = new Paint();
+        float textSize = courtWidth / 12f;
+        float cornerRadius = 16f;
+        Paint paint = new Paint();
 
-        p.setTextSize(courtWidth / 12);
-        p.setFakeBoldText(true);
+        paint.setTextSize(textSize);
+        paint.setFakeBoldText(true);
 
-        //draw a circle on the selected player
-        if(selected != null) {
-            p.setColor(Color.YELLOW);
-            canvas.drawCircle(selected.x, selected.y, 50, p);
-        }
+//        // draw a circle on the selected player
+//        if(selected != null) {
+//            paint.setColor(Color.YELLOW);
+//            canvas.drawRoundRect(
+//                    selected.x - textSize,
+//                    selected.y - textSize*0.7f,
+//                    selected.x + textSize,
+//                    selected.y + textSize*0.7f,
+//                    cornerRadius, cornerRadius,
+//                    paint);
+//        }
 
+        // start drawing players
+        paint.setStyle(Paint.Style.FILL);
         for (int i = 0; i < 6; i++) {
             String text;
             Rect bounds = new Rect();
 
             if (i == 0 && isServingLeft) {
-                p.setStyle(Paint.Style.FILL_AND_STROKE);
-            } else {
-                p.setStyle(Paint.Style.STROKE);
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setColor(Color.WHITE);
+                paint.setStrokeWidth(20f);
+                canvas.drawRoundRect(
+                        localCoords[i].x - textSize,
+                        localCoords[i].y - textSize*0.7f,
+                        localCoords[i].x + textSize,
+                        localCoords[i].y +textSize*0.7f,
+                        cornerRadius, cornerRadius,
+                        paint
+                );
+                paint.setStyle(Paint.Style.FILL);
             }
 
-            p.setColor(Color.WHITE);
-            canvas.drawCircle(localCoords[i].x, localCoords[i].y, 40, p);
+            paint.setColor(Color.RED);
+            canvas.drawRoundRect(
+                    localCoords[i].x - textSize,
+                    localCoords[i].y - textSize*0.7f,
+                    localCoords[i].x + textSize,
+                    localCoords[i].y +textSize*0.7f,
+                    cornerRadius, cornerRadius,
+                    paint
+            );
 
             if (leftPlayers[i] > 0) {
-                p.setColor(Color.BLACK);
+                paint.setColor(Color.BLACK);
+                paint.setTextAlign(Paint.Align.CENTER);
                 text = String.valueOf(leftPlayers[i]);
-                p.getTextBounds(text, 0, text.length(), bounds);
-                canvas.drawText(text, localCoords[i].x - bounds.width()/2, localCoords[i].y+bounds.height()/2, p);
+                paint.getTextBounds(text, 0, text.length(), bounds);
+                canvas.drawText(
+                        text,
+                        localCoords[i].x,
+                        localCoords[i].y + bounds.height()/2,
+                        paint
+                );
             }
 
             if (i == 0 && !isServingLeft) {
-                p.setStyle(Paint.Style.FILL_AND_STROKE);
-            } else {
-                p.setStyle(Paint.Style.STROKE);
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setColor(Color.WHITE);
+                paint.setStrokeWidth(20f);
+                canvas.drawRoundRect(
+                        visitCoords[i].x - textSize,
+                        visitCoords[i].y - textSize*0.7f,
+                        visitCoords[i].x +textSize,
+                        visitCoords[i].y +textSize*0.7f,
+                        cornerRadius, cornerRadius,
+                        paint
+                );
+                paint.setStyle(Paint.Style.FILL);
             }
 
-            p.setColor(Color.WHITE);
-            canvas.drawCircle(visitCoords[i].x, visitCoords[i].y, 40, p);
+            paint.setColor(Color.BLUE);
+            canvas.drawRoundRect(
+                    visitCoords[i].x - textSize,
+                    visitCoords[i].y - textSize*0.7f,
+                    visitCoords[i].x +textSize,
+                    visitCoords[i].y +textSize*0.7f,
+                    cornerRadius, cornerRadius,
+                    paint
+            );
 
             if (rightPlayers[i] > 0) {
-                p.setColor(Color.BLACK);
+                paint.setColor(Color.BLACK);
+                paint.setTextAlign(Paint.Align.CENTER);
                 text = String.valueOf(rightPlayers[i]);
-                p.getTextBounds(text, 0, text.length(), bounds);
-                canvas.drawText(String.valueOf(rightPlayers[i]), visitCoords[i].x - bounds.width() / 2, visitCoords[i].y + bounds.height() / 2, p);
+                paint.getTextBounds(text, 0, text.length(), bounds);
+                canvas.drawText(
+                        text,
+                        visitCoords[i].x,
+                        visitCoords[i].y + bounds.height()/2,
+                        paint
+                );
             }
         }
     }
 
     private void calcPoints() {
         // VI
-        localCoords[5].x = center.x - courtWidth / 3;
+        localCoords[5].x = center.x - courtWidth *9/24 ;
         localCoords[5].y = center.y;// + myFont.getSize() / 2;
-        visitCoords[5].x = center.x + courtWidth / 3;
+        visitCoords[5].x = center.x + courtWidth *9/24;
         visitCoords[5].y = center.y;// + myFont.getSize() / 2;
 
         // III
-        localCoords[2].x = center.x - courtWidth / 12;
+        localCoords[2].x = center.x - courtWidth / 8;
         localCoords[2].y = localCoords[5].y;
-        visitCoords[2].x = center.x + courtWidth / 12;
+        visitCoords[2].x = center.x + courtWidth / 8;
         visitCoords[2].y = visitCoords[5].y;
 
         // I
