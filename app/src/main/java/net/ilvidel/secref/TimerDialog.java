@@ -18,7 +18,7 @@ public class TimerDialog extends DialogFragment {
 
     private TextView timeText;
     private TimerTask mTimerTask;
-    private int seconds;
+    private int seconds = 30;
 
     /**
      * Create a new instance of TimerDialog, providing "seconds" as an argument.
@@ -42,7 +42,7 @@ public class TimerDialog extends DialogFragment {
         builder.setNegativeButton(R.string.cancel, null);
 
         View view = View.inflate(getActivity(), R.layout.timer_dialog, null);
-        timeText = (TextView) view.findViewById(R.id.timeText);
+        timeText = view.findViewById(R.id.timeText);
 
         seconds = getArguments().getInt("seconds");
 
@@ -55,7 +55,7 @@ public class TimerDialog extends DialogFragment {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
             seconds = savedInstanceState.getInt(TIME);
-            timeText.setText(String.valueOf(seconds));
+            timeText.setText(String.format("%d:%02d", seconds / 60, seconds % 60));
         }
         startTimer();
     }
@@ -82,16 +82,19 @@ public class TimerDialog extends DialogFragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        timeText.setText(String.format("%d:%02d", seconds/60, seconds%60));
+                        if (seconds >= 0) {
+                            timeText.setText(String.format("%d:%02d", seconds / 60, seconds % 60));
+                        }
                         if(seconds < 7) {
                             timeText.setBackgroundResource(R.color.colorAccent);
                         }
                     }
                 });
-                if (seconds < 0) {
+                if (seconds == 0) {
                     Vibrator v = (Vibrator) getActivity().getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
                     long[] pattern = {0, 150, 75, 150, 75};
                     v.vibrate(pattern, -1);
+                } else if(seconds < 0) {
                     this.cancel();
                     dismiss();
                 }
