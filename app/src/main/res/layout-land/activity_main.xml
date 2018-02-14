@@ -1,200 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#67b7f8"
     android:fitsSystemWindows="true"
     tools:context="net.ilvidel.secref.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#67b7f8">
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/leftFieldName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:ems="10"
                 android:inputType="textCapCharacters|textPersonName"
                 android:text="Name"
-                android:ems="10"
-                android:id="@+id/leftFieldName"
-                tools:text="ADV Miguelturra"
                 android:textAlignment="viewStart"
-                android:ellipsize="end" />
+                tools:text="ADV Miguelturra" />
 
             <Space
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_width="0dp" />
+                android:layout_weight="1" />
 
             <EditText
+                android:id="@+id/rightFieldName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:ems="10"
                 android:inputType="textCapCharacters|textPersonName"
                 android:text="Name"
-                android:ems="10"
-                android:id="@+id/rightFieldName"
-                tools:text="CV Atlético Puertollano"
                 android:textAlignment="textEnd"
-                android:ellipsize="start" />
+                tools:text="CV Atlético Puertollano" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90sp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/buttonDeleteLeft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onDeletePointLeft"
-                    android:text="-1"
-                    android:textAppearance="@android:style/TextAppearance.Small" />
-
-                <ImageButton
-                    android:id="@+id/buttonRotateLeft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRotateLeft"
-                    android:src="@android:drawable/ic_menu_rotate" />
 
                 <Button
                     android:id="@+id/scoreLeft"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:onClick="onScoreLeft"
                     android:text="00"
-                    android:textSize="28sp"
+                    android:textSize="18pt"
                     android:textStyle="bold" />
 
                 <Button
+                    android:id="@+id/buttonDeleteLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:onClick="onDeletePointLeft"
+                    android:text="-1"
+                    android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+                <ImageButton
+                    android:id="@+id/buttonRotateLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="1"
+                    android:layout_weight="2"
+                    android:onClick="onRotateLeft"
+                    android:src="@android:drawable/ic_menu_rotate" />
+
+                <ImageButton
                     android:id="@+id/timeoutLeft"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:onClick="onTimeoutLeft"
-                    android:text="@string/timeout"
-                    android:textAppearance="@android:style/TextAppearance.Small" />
-
-                <Button
-                    android:id="@+id/substLeft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onSubstitutionLeft"
-                    android:text="@string/substitution"
-                    android:textAppearance="@android:style/TextAppearance.Small" />
-
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_stopwatch" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <net.ilvidel.secref.CourtView
                     android:id="@+id/court_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="10"
+                    android:layout_height="wrap_content"
                     android:onClick="onCourtTap" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/buttonSwapSides"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
                         android:onClick="onSwapSides"
                         android:text="@string/court_switch" />
 
                     <Button
                         android:id="@+id/buttonReset"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:backgroundTint="@android:color/holo_orange_light"
-                        android:gravity="center"
                         android:onClick="onResetButton"
                         android:text="@string/reset" />
 
                     <Button
                         android:id="@+id/buttonChangeService"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
                         android:onClick="onChangeService"
                         android:text="@string/service_change" />
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90sp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/buttonDeleteRight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onDeletePointRight"
-                    android:text="-1"
-                    android:textAppearance="@android:style/TextAppearance.Small" />
-
-                <ImageButton
-                    android:id="@+id/buttonRotateRight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRotateRight"
-                    android:src="@android:drawable/ic_menu_rotate" />
 
                 <Button
                     android:id="@+id/scoreRight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:onClick="onScoreRight"
                     android:text="00"
-                    android:textSize="28sp"
+                    android:textAllCaps="false"
+                    android:textSize="18pt"
                     android:textStyle="bold" />
 
                 <Button
+                    android:id="@+id/buttonDeleteRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:onClick="onDeletePointRight"
+                    android:text="-1"
+                    android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+                <ImageButton
+                    android:id="@+id/buttonRotateRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:onClick="onRotateRight"
+                    android:src="@android:drawable/ic_menu_rotate" />
+
+                <ImageButton
                     android:id="@+id/timeoutRight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:onClick="onTimeoutRight"
-                    android:text="@string/timeout"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_stopwatch"
                     android:textAppearance="@android:style/TextAppearance.Small" />
-
-                <Button
-                    android:id="@+id/substRight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onSubstitutionRight"
-                    android:text="@string/substitution"
-                    android:textAppearance="@android:style/TextAppearance.Small" />
-
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

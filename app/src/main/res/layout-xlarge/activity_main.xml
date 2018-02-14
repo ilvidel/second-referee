@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="#63b7f8"
     tools:context="net.ilvidel.secref.MainActivity">
 
 
@@ -13,118 +14,155 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#63b7f8">
+        android:layout_margin="@dimen/activity_horizontal_margin">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+        <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="-1"
-                    android:id="@+id/buttonDeleteLeft"
-                    android:onClick="onDeletePointLeft"
-                    android:layout_gravity="center"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-
-                <ImageButton
-                    android:src="@android:drawable/ic_menu_rotate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/buttonRotateLeft"
-                    android:layout_gravity="center"
-                    android:onClick="onRotateLeft" />
-            </LinearLayout>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="00"
-                android:textSize="48sp"
-                android:textStyle="bold"
-                android:id="@+id/scoreLeft"
-                android:onClick="onScoreLeft"
-                android:layout_gravity="center|fill" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="00"
-                android:textSize="48sp"
-                android:textStyle="bold"
-                android:onClick="onScoreRight"
-                android:id="@+id/scoreRight" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="-1"
-                    android:id="@+id/buttonDeleteRight"
-                    android:onClick="onDeletePointRight"
-                    android:layout_gravity="center"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-
-                <ImageButton
-                    android:src="@android:drawable/ic_menu_rotate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/buttonRotateRight"
-                    android:onClick="onRotateRight"
-                    android:layout_gravity="center" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:columnCount="7"
+            android:rowCount="3">
 
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textCapCharacters|textPersonName"
-                android:text="Name"
-                android:ems="10"
                 android:id="@+id/leftFieldName"
-                tools:text="ADV Miguelturra"
-                android:textAlignment="viewStart"
-                android:ellipsize="end" />
-
-            <Space
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_width="0dp" />
-
-            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textCapCharacters|textPersonName"
-                android:text="Name"
+                android:layout_column="0"
+                android:layout_columnSpan="3"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center|fill"
+                android:layout_row="0"
                 android:ems="10"
+                android:inputType="textCapWords"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textStyle="bold"
+                tools:text="ADV Miguelturra" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_column="3"
+                android:layout_columnWeight="5"
+                android:layout_gravity="center|fill"
+                android:layout_row="0"
+                android:layout_rowSpan="3
+" />
+
+            <EditText
                 android:id="@+id/rightFieldName"
-                tools:text="CV Atlético Puertollano"
-                android:textAlignment="textEnd"
-                android:ellipsize="start" />
-        </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="4"
+                android:layout_columnSpan="3"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center|fill"
+                android:layout_row="0"
+                android:ems="10"
+                android:inputType="textCapWords"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textStyle="bold"
+                tools:text="CV Atlético Puertollano" />
+
+            <Button
+                android:id="@+id/scoreLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="72pt"
+                android:layout_column="0"
+                android:layout_columnSpan="3"
+                android:layout_gravity="fill"
+                android:layout_row="1"
+                android:onClick="onScoreLeft"
+                android:text="00"
+                android:textSize="32pt"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/timeoutLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_row="2"
+                android:onClick="onTimeoutLeft"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_stopwatch"
+                android:text="@string/timeout_large" />
+
+            <Button
+                android:id="@+id/buttonDeleteLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_row="2"
+                android:onClick="onDeletePointLeft"
+                android:text="-1"
+                android:textAppearance="@android:style/TextAppearance.Large" />
+
+            <ImageButton
+                android:id="@+id/buttonRotateLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_row="2"
+                android:onClick="onRotateLeft"
+                android:src="@android:drawable/ic_menu_rotate" />
+
+            <Button
+                android:id="@+id/scoreRight"
+                android:layout_width="wrap_content"
+                android:layout_height="72pt"
+                android:layout_column="4"
+                android:layout_columnSpan="3"
+                android:layout_gravity="fill"
+                android:layout_row="1"
+                android:onClick="onScoreRight"
+                android:text="00"
+                android:textSize="32pt"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/timeoutRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="4"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_row="2"
+                android:onClick="onTimeoutRight"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_stopwatch"
+                android:text="@string/timeout_large" />
+
+            <Button
+                android:id="@+id/buttonDeleteRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="5"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_row="2"
+                android:onClick="onDeletePointRight"
+                android:text="-1"
+                android:textAppearance="@android:style/TextAppearance.Large" />
+
+            <ImageButton
+                android:id="@+id/buttonRotateRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="6"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_row="2"
+                android:onClick="onRotateRight"
+                android:src="@android:drawable/ic_menu_rotate" />
+        </GridLayout>
 
         <net.ilvidel.secref.CourtView
             android:layout_width="wrap_content"
@@ -135,76 +173,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/timeoutLeft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="onTimeoutLeft"
-                    android:text="@string/timeout_large"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-
-                <Button
-                    android:id="@+id/substLeft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="onSubstitutionLeft"
-                    android:text="@string/substitution_long"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/timeoutRight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="onTimeoutRight"
-                    android:text="@string/timeout_large"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-
-                <Button
-                    android:id="@+id/substRight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="onSubstitutionRight"
-                    android:text="@string/substitution_long"
-                    android:textAppearance="@android:style/TextAppearance.Large" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonSwapSides"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onSwapSides"
@@ -213,7 +188,7 @@
 
             <Button
                 android:id="@+id/buttonReset"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_orange_light"
@@ -223,7 +198,7 @@
 
             <Button
                 android:id="@+id/buttonChangeService"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onChangeService"
@@ -233,15 +208,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:srcCompat="@android:drawable/ic_menu_preferences"
-        android:id="@+id/fab"
-        android:onClick="onShowSetting"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin" />
 
 </android.support.design.widget.CoordinatorLayout>
