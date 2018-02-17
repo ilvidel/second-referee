@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="0:00"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+        android:text="0:30"
+        android:textSize="28pt"
+        android:textStyle="bold" />
 </LinearLayout>

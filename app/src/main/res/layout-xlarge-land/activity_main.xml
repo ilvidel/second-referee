@@ -21,15 +21,17 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/leftFieldName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:ems="10"
                 android:inputType="textCapCharacters|textPersonName"
                 android:text="Name"
-                android:ems="10"
-                android:id="@+id/leftFieldName"
-                tools:text="ADV Miguelturra"
-                android:ellipsize="end"
-                android:textAppearance="@android:style/TextAppearance.Large" />
+                android:textAlignment="center"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textStyle="bold"
+                tools:text="ADV Miguelturra" />
 
             <Space
                 android:layout_height="match_parent"
@@ -37,15 +39,17 @@
                 android:layout_width="0dp" />
 
             <EditText
+                android:id="@+id/rightFieldName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:ems="10"
                 android:inputType="textCapCharacters|textPersonName"
                 android:text="Name"
-                android:ems="10"
-                android:id="@+id/rightFieldName"
-                tools:text="CV Atlético Puertollano"
-                android:ellipsize="start"
-                android:textAppearance="@android:style/TextAppearance.Large" />
+                android:textAlignment="center"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textStyle="bold"
+                tools:text="CV Atlético Puertollano" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,62 +62,62 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/activity_vertical_margin"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/buttonDeleteLeft"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="onDeletePointLeft"
-                    android:text="-1" />
+                    android:text="-1"
+                    android:textAppearance="@android:style/TextAppearance.Large" />
 
                 <ImageButton
                     android:id="@+id/buttonRotateLeft"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="onRotateLeft"
                     android:src="@android:drawable/ic_menu_rotate" />
 
                 <Button
                     android:id="@+id/scoreLeft"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:onClick="onScoreLeft"
                     android:text="00"
-                    android:textSize="36sp"
+                    android:textSize="32pt"
                     android:textStyle="normal|bold" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/timeoutLeft"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:lines="2"
                     android:onClick="onTimeoutLeft"
-                    android:text="@string/timeout_large" />
-
-                <Button
-                    android:id="@+id/substLeft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onSubstitutionLeft"
-                    android:text="@string/substitution_long" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_stopwatch" />
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="20" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="25"
+                android:orientation="vertical">
 
                 <net.ilvidel.secref.CourtView
+                    android:id="@+id/court_view"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:id="@+id/court_view"
                     android:onClick="onCourtTap" />
 
                 <LinearLayout
@@ -167,65 +171,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/activity_vertical_margin"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/buttonDeleteRight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="onDeletePointRight"
-                    android:text="-1" />
+                    android:text="-1"
+                    android:textAppearance="@android:style/TextAppearance.Large" />
 
                 <ImageButton
                     android:id="@+id/buttonRotateRight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="onRotateRight"
                     android:src="@android:drawable/ic_menu_rotate" />
 
                 <Button
                     android:id="@+id/scoreRight"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:onClick="onScoreRight"
                     android:text="00"
-                    android:textSize="36sp"
+                    android:textSize="32pt"
                     android:textStyle="normal|bold" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/timeoutRight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:lines="2"
                     android:onClick="onTimeoutRight"
-                    android:text="@string/timeout_large" />
-
-                <Button
-                    android:id="@+id/substRight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onSubstitutionRight"
-                    android:text="@string/substitution_long" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_stopwatch" />
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
+                    android:layout_weight="20" />
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:srcCompat="@android:drawable/ic_menu_preferences"
-        android:id="@+id/fab"
-        android:onClick="onShowSetting"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin" />
-
 </android.support.design.widget.CoordinatorLayout>
